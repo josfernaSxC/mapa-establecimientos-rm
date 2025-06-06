@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mapa Establecimientos RM</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <style>
+    #map {
+      height: 90vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h2>Establecimientos Educacionales - Región Metropolitana</h2>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="datos.js"></script>
+  <script>
+    const map = L.map('map').setView([-33.45, -70.65], 11);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    establecimientos.forEach(est => {
+      L.marker([est.lat, est.lon])
+        .addTo(map)
+        .bindPopup(`<strong>${est.nombre}</strong><br>Comuna: ${est.comuna}`);
+    });
+  </script>
+</body>
+</html>
