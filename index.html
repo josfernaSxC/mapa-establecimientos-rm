@@ -32,7 +32,7 @@
     establecimientos.forEach(est => {
       L.marker([est.lat, est.lon])
         .addTo(map)
-        .bindPopup(`<strong>${est.nombre}</strong><br>Comuna: ${est.comuna}`);
+        .bindPopup(`<strong>${est.nombre}</strong><br>Comuna: ${est.comuna}<br><em>${est.niveles}</em>`);
     });
   </script>
 </body>
